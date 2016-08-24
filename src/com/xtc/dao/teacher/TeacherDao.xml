@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.xtc.dao.teacher.TeacherDao">
+	
+	<select id="getAllTeacher"  resultType="Teacher">
+	select id,t_name as name,t_password as password,sex,description,pic_url as picUrl,school_name as schoolName,regist_date as registDate,remark 
+	from t_teacher limit 20
+	</select>
+	
+	<select id="login"  resultType="java.lang.Integer">
+	select count(1) from t_teacher where t_name=#{0} and t_password=#{1}
+	</select>
+	
+	<select id="getTeacherByName" parameterType="java.lang.String" resultType="Teacher">
+	select id,t_name as name,t_password as password,sex,description,pic_url as picUrl,school_name as schoolName,regist_date as registDate,remark 
+	from t_teacher where t_name =#{name}
+	</select>
+	
+	<select id="getById" parameterType="java.lang.String" resultType="Teacher">
+	select id,t_name as name,t_password as password,sex,description,pic_url as picUrl,school_name as schoolName,regist_date as registDate,remark 
+	from t_teacher where id=#{id}
+	</select>
+	
+	<insert id="insert" parameterType="Teacher">
+		INSERT INTO t_teacher(id,t_name,t_password,sex,description,pic_url,school_name,regist_date,remark)
+		values (#{id}, #{name},#{password},#{sex},#{description},#{picUrl},#{schoolName},#{registDate},#{remark})
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.String">
+	delete from t_teacher where id=#{id}
+	</delete>
+	
+	<update id="update" parameterType="Teacher">
+	update t_teacher set t_name=#{name},t_password=#{password},sex=#{sex},description=#{description},pic_url=#{picUrl},school_name=#{schoolName},regist_date=#{registDate},remark=#{remark}
+	where id=#{id}
+	</update>
+</mapper>
