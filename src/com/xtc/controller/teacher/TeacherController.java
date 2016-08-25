@@ -32,6 +32,9 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
+	/***
+	 * 获取全部信息
+	 **/
 	@RequestMapping(value="/getAllTeacher")
 	public ModelAndView getAllTeachers() {
 		Map< String, Object> map=new HashMap<String, Object>();
@@ -49,6 +52,9 @@ public class TeacherController {
 		return new ModelAndView("showAllTeacher",map);
 	}
 	
+	/*
+	 *  教师登录
+	 **/
 	@RequestMapping(value="/login")
 	public ModelAndView login(@RequestParam("name") String name,@RequestParam("password") String password) {
 		Integer i=teacherService.login(name, password);
@@ -60,7 +66,9 @@ public class TeacherController {
 		}
 	}
 	
-	
+	/***
+	 *根据名字查找教师 
+	 ***/
 	@RequestMapping(value="/getTeacherByName")
 	public ModelAndView getTeacherByName(@RequestParam("getName") String name) {
 		Map< String, Object> map=new HashMap<String, Object>();
@@ -77,15 +85,27 @@ public class TeacherController {
 		map.put("dateList", dateList);
 		return new ModelAndView("showAllTeacher",map);
 	}
+	
+	/***
+	 *跳转到添加教师页面 
+	 **/
 	@RequestMapping("/insert")
 	public String toAddTeacherPage(){
 		return "insert";
 	}
+	
+	/**
+	 *删除教师 
+	 **/
 	@RequestMapping(value="/delete/{id}")
 	public String deleteById(@PathVariable("id") String id){
 		teacherService.deleteById(id);
 		return "deleteSuccess";
 	}
+	
+	/***
+	 *跳转到修改教师的页面
+	 **/
 	@RequestMapping(value="/update/{id}")
 	public ModelAndView updateById(@PathVariable("id") String id){
 		Map< String, Object> map=new HashMap<String, Object>();
@@ -94,6 +114,9 @@ public class TeacherController {
 		return new ModelAndView("update",map);
 	}
 	
+	/***
+	 *添加教师 
+	 **/
 	@RequestMapping("/addTeacher")
 	public ModelAndView addTeacher(@Valid Teacher teacher,BindingResult result){
 		
@@ -113,6 +136,10 @@ public class TeacherController {
 			return new ModelAndView("success");
 		}
 	}
+	
+	/***
+	 *修改教师 
+	 **/
 	@RequestMapping("/update/updateTeacher")
 	public ModelAndView updateTeacher(@Valid Teacher teacher,BindingResult result){
 		Map< String, Object> map=new HashMap<String, Object>();

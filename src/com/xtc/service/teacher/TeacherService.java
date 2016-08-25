@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.xtc.bean.teacher.Teacher;
 
+/***
+ * @author 范文聪
+ * @date 2016-8-9
+ **/
 public interface TeacherService {
 	//插入数据
     public void insert(Teacher teacher); 

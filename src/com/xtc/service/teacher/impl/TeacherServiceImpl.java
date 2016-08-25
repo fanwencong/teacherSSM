@@ -9,6 +9,10 @@ import com.xtc.bean.teacher.Teacher;
 import com.xtc.dao.teacher.TeacherDao;
 import com.xtc.service.teacher.TeacherService;
 
+/***
+ * @author 范文聪
+ * @date 2016-8-9
+ **/
 @Service
 public class TeacherServiceImpl implements TeacherService {
 	

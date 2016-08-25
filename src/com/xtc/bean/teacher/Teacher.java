@@ -8,11 +8,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 
+/***
+ * @author 范文聪
+ * @date 2016-8-9
+ **/
 public class Teacher {
-     /***
-      * @author 范文聪
-      * time 2016-8-9
-      **/
 	
 	//教师ID
 	private String id;
